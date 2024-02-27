@@ -1,0 +1,11 @@
+<div [ngSwitch]="role">
+    <div *ngSwitchCase="'Admin'">
+        <app-rooms></app-rooms>
+    </div>
+    <div *ngSwitchCase="'User'">
+        Welcome to Laro Puti Hotel!
+    </div>
+    <div *ngSwitchDefault>
+        Please log in.
+    </div>
+</div>
