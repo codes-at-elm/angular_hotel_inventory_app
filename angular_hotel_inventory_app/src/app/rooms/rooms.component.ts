@@ -120,4 +120,11 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
   changeTitle() {
     this.title = "Changed Room List Title";
   }
+
+  showRoomList: boolean = true;
+
+  hideRoomList() {
+
+    this.showRoomList = false;
+  }
 }

@@ -10,7 +10,7 @@
 
 <!-- {{ roomList | json }} -->
 
-<div *ngIf="rooms.availableRooms > 0">
+<div *ngIf="showRoomList">
     <app-rooms-list [rooms]="roomList"
                     (selectedRoom)="selectRoom($event)"
                     [title]="title">
@@ -24,5 +24,6 @@
 <div>
     <button (click)="addRoom()">Add Room</button>
     <button (click)="changeTitle()">Change Room List Title</button>
+    <button (click)="hideRoomList()">Hide Room List</button>
 </div>
 
