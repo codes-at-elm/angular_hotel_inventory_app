@@ -1,12 +1,16 @@
-<p>rooms works!</p>
+<app-header></app-header>
+
+<h1>Hotel Details</h1>
+<p>Total Rooms: {{ rooms.totalRooms  }}</p>
+<p>Available Rooms: {{ rooms.availableRooms }}</p>
+<p>Booked Rooms: {{ rooms.bookedRooms }}</p>
 
 <!-- {{ roomList | json }} -->
 
 <div *ngIf="rooms.availableRooms > 0">
-    <app-rooms-list
-    [rooms]="roomList"
-    (selectedRoom)="selectRoom($event)"
-    [title] = "title">
+    <app-rooms-list [rooms]="roomList"
+                    (selectedRoom)="selectRoom($event)"
+                    [title]="title">
     </app-rooms-list>
 </div>
 
@@ -15,7 +19,7 @@
 </div>
 
 <div>
-    <button (click)="addRoom()" >Add Room</button>
-    <button (click)="changeTitle()" >Change Room List Title</button>
+    <button (click)="addRoom()">Add Room</button>
+    <button (click)="changeTitle()">Change Room List Title</button>
 </div>
 

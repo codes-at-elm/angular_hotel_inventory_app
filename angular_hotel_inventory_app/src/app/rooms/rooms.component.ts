@@ -1,12 +1,13 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, DoCheck, OnInit, ViewChild } from '@angular/core';
 import { Room, RoomList } from './rooms';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
   styleUrl: './rooms.component.css'
 })
-export class RoomsComponent implements OnInit, DoCheck {
+export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterViewChecked {
 
   rooms: Room = {
     totalRooms: 20,
@@ -17,17 +18,27 @@ export class RoomsComponent implements OnInit, DoCheck {
   title = "Room List";
 
   roomList: RoomList[] = [];
+  @ViewChild(HeaderComponent) headerComponent!: HeaderComponent;
   selectedRoom!: RoomList;
-  constructor()
-  {
+
+  constructor() {
 
   }
-    ngDoCheck(): void {
-      console.log('on changes is called.');
-    }
 
-  ngOnInit(): void
-  {
+  ngAfterViewInit(): void {
+    this.headerComponent.title = "Rooms View From Rooms Component";
+  }
+
+  ngDoCheck(): void {
+    console.log('on changes is called.');
+  }
+
+  ngAfterViewChecked(): void {
+
+  }  
+
+  ngOnInit(): void {
+    console.log(this.headerComponent);
     this.roomList = [
       {
         roomNumber: 1,
@@ -79,8 +90,7 @@ export class RoomsComponent implements OnInit, DoCheck {
       }];
   }
 
-  selectRoom(room: RoomList)
-  {
+  selectRoom(room: RoomList) {
     this.selectedRoom = room;
     console.log(room);
   }
